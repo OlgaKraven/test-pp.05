@@ -191,5 +191,7 @@ def set_status(req_id):
     return redirect(ref)
 
 if __name__ == '__main__':
-    ensure_db()
+    # важно: выполняем ensure_db внутри контекста приложения
+    with app.app_context():
+        ensure_db()
     app.run(debug=True)
